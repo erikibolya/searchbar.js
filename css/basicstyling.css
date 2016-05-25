@@ -1,0 +1,115 @@
+.myTaggableInput{
+    z-index: 10;
+    width: 500px;
+    box-sizing: border-box;
+    overflow: auto;
+    height: 40px;
+    font-family: "Trebuchet MS", sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #C6C6C6;
+    font-size: 18px;
+    color: black;
+}
+
+.myTaggableInput .tag{
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    font-weight: bold;
+    border-radius: 2px;
+    color: rgb(0,115,234);
+    background-color: rgb(246,246,246);
+    border: 1px solid rgb(221,221,221);
+    padding-left: 8px;
+    padding-right: 22px;
+    margin: 3px 0;
+    margin-right: 5px;
+}
+
+.myTaggableInput .tag.col-1{
+    /*background-color: blue;*/
+}
+
+.myTaggableInput .tag.col-2{
+    /*background-color: red;*/
+}
+
+.myTaggableInput .tag.col-3{
+    /*background-color: green;*/
+}
+
+.myTaggableInput .tag .delete{
+    right: 0;
+    color: rgb(101,103,101);
+    right: 5px;
+    top: 4px;
+    cursor: pointer;
+}
+
+.myTaggableInput .tag .delete:hover{
+    color: grey;    
+}
+
+.myTaggableInput .tag .delete:before{
+    content: "\2716";
+}
+
+.myTaggableInput .help.active {
+    z-index: 10;
+    padding: 0px;
+    margin: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #C6C6C6;
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+
+.myTaggableInput .help.active th{
+    /*width is automaticly set*/
+    height: 30px;
+    text-align: center;
+}
+
+.myTaggableInput .help.active td{
+    /*width is automaticly set*/
+    height: 30px;
+    text-align: center;
+    outline: none;
+}
+
+
+.myTaggableInput .help.active th.col-1{
+    /*background-color: blue;*/
+}
+
+.myTaggableInput .help.active th.col-2{
+    /*background-color: red;*/
+}
+
+.myTaggableInput .help.active th.col-3{
+    /*background-color: green;*/
+}
+
+.myTaggableInput .help.active td.col-1{
+
+}
+
+.myTaggableInput .help.active td.col-2{
+
+}
+
+.myTaggableInput .help.active td.col-3{
+
+}
+
+.myTaggableInput .help.active td.filled{
+    cursor: pointer;
+}
+
+.myTaggableInput .help.active td.filled.hover{
+    background-color: #C6C6C6;
+}
