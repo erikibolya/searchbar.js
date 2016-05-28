@@ -1,4 +1,4 @@
-/*
+/**
  * jQuery Searchbar.js
  *
  * @version v1.0 (05/2016)
@@ -43,7 +43,7 @@
             "outline": "none",
             "float": "right"
         };
-//parameters            
+        //parameters            
         var allowDuplicity;
         var showCategories;
         var caseSensitive;
@@ -84,7 +84,7 @@
         function initVariables() {
             allowDuplicity = (parameters["allowDuplicity"] !== 'undefined' && typeof parameters["allowDuplicity"] === 'boolean') ? parameters["allowDuplicity"] : true;
             showCategories = (parameters["showCategories"] !== 'undefined' && typeof parameters["showCategories"] === 'boolean') ? parameters["showCategories"] : true;
-            caseSensitive = showCategories = (parameters["caseSensitive"] !== 'undefined' && typeof parameters["caseSensitive"] === 'boolean') ? parameters["caseSensitive"] : true;
+            caseSensitive = (parameters["caseSensitive"] !== 'undefined' && typeof parameters["caseSensitive"] === 'boolean') ? parameters["caseSensitive"] : true;
 
             tagCount = (parameters["tagCount"] !== 'undefined' && $.isNumeric(parameters["tagCount"]) && parameters["tagCount"] > 0) ? parameters["tagCount"] : 0;
             tagLength = (parameters["tagLength"] !== 'undefined' && $.isNumeric(parameters["tagLength"]) && parameters["tagLength"] > 0) ? new RegExp("^.{0," + parameters["tagLength"] + "}$") : 0;
@@ -102,15 +102,17 @@
             minInputWidth = (parameters["minInputWidth"] !== 'undefined' && $.isNumeric(parameters["minInputWidth"])) ? parameters["minInputWidth"] : 100;
 
             name = input.attr("name");
-            identificator = (input[0].hasAttribute("id")) ? {'id': input.attr("id")} : {'class': input.attr("class")};
+            identificator = (input[0].hasAttribute("id")) ? {'id': input.attr("id")} : (input[0].hasAttribute("class")) ? {'class': input.attr("class")} : "";
             myTags = [];
             myTagsTexts = [];
         }
 
         function createStructure() {
             var wrapper = $("<div></div>");
-            for (var iden in identificator) {
-                wrapper.attr(iden, identificator[iden]);
+            if (identificator !== '') {
+                for (var iden in identificator) {
+                    wrapper.attr(iden, identificator[iden]);
+                }
             }
             input.after(wrapper);
             input.removeAttr("name");
@@ -253,7 +255,6 @@
                     th.addClass("col-" + gi);
                     thead.append(th);
                 }
-
                 var limit = currentAutocompleteTags[category].length;
                 for (var i = 0; i < limit; i++) {
                     var cell = $("<td class='filled col-" + gi + "'></td>");
@@ -419,9 +420,11 @@
 
             input.closest("form").on('submit', function (e) {
                 if (input.val().trim() === '' && count(myTags) === 0) {
+                    e.preventDefault();
                     input[0].setCustomValidity(noTagsMessage);
                     return false;
                 } else if (tagLength !== 0 && !tagLength.test(input.val().trim())) {
+                    e.preventDefault();
                     input[0].setCustomValidity(tagLengthMessage);
                     return false;
                 } else if (hover !== null) {
@@ -492,5 +495,3 @@
     }
     ;
 })(jQuery);
-
-
