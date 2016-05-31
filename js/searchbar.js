@@ -248,22 +248,24 @@
             }
             var gi = 1;
             for (var category in currentAutocompleteTags) {
-                if (showCategories) {
-                    var th = $("<th></th>");
-                    th.width(width);
-                    th.html(category);
-                    th.addClass("col-" + gi);
-                    thead.append(th);
-                }
                 var limit = currentAutocompleteTags[category].length;
-                for (var i = 0; i < limit; i++) {
-                    var cell = $("<td class='filled col-" + gi + "'></td>");
-                    cell.width(width);
-                    cell.html(currentAutocompleteTags[category][i]);
-                    rows[i].append(cell);
-                }
-                for (var j = limit; j < rowsnum; j++) {
-                    rows[j].append("<td class='col-" + gi + "'></td>");
+                if (limit > 0) {
+                    if (showCategories) {
+                        var th = $("<th></th>");
+                        th.width(width);
+                        th.html(category);
+                        th.addClass("col-" + gi);
+                        thead.append(th);
+                    }
+                    for (var i = 0; i < limit; i++) {
+                        var cell = $("<td class='filled col-" + gi + "'></td>");
+                        cell.width(width);
+                        cell.html(currentAutocompleteTags[category][i]);
+                        rows[i].append(cell);
+                    }
+                    for (var j = limit; j < rowsnum; j++) {
+                        rows[j].append("<td class='col-" + gi + "'></td>");
+                    }
                 }
                 gi++;
             }
@@ -300,9 +302,6 @@
                                 currentAutocompleteTags[category].push("<b>" + posbold + "</b>" + autocompleteTags[category][i].substring(value.length));
                             }
                         }
-                    }
-                    if (currentAutocompleteTags[category].length === 0) {
-                        delete currentAutocompleteTags[category];
                     }
                 }
             }
