@@ -114,6 +114,7 @@
                     wrapper.attr(iden, identificator[iden]);
                 }
             }
+            var tmp = input;
             input.after(wrapper);
             input.removeAttr("name");
             input.removeClass();
@@ -125,11 +126,17 @@
             help = input.next();
             thead = $("<thead></thead>");
             tbody = $("<tbody></tbody>");
+            $.each(tmp.attributes, function (i, a) {
+                if ('autocomplete' === a.name) {
+                    input.attr('autocomplete', 'off');
+                } else {
+                    input.attr(a.name, a.value);
+                }
+
+            });
             help.append(thead);
             help.append(tbody);
             input.css(inputCSS);
-            input.attr("placeholder", placeholder);
-            input.attr("autocomplete", "off");
             parend.css("min-height", parend.css("height"));
             parend.css("height", "initial");
             input.outerHeight(parend.height());
