@@ -69,13 +69,13 @@
 }
 
 .myTaggableInput .help.active th{
-    /*width is automaticly set*/
+    /*width is automatically set*/
     height: 30px;
     text-align: center;
 }
 
 .myTaggableInput .help.active td{
-    /*width is automaticly set*/
+    /*width is automatically set*/
     height: 30px;
     text-align: center;
     outline: none;
